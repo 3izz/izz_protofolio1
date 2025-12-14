@@ -1,169 +1,543 @@
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Izz AL-Drrass | AI & Data Science Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="f1.css" />
-  <style>html { scroll-behavior: smooth; }</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Izz AL-Drrass - AI & Data Science Portfolio">
+    <meta name="keywords" content="AI, Machine Learning, Data Science, Portfolio, Developer">
+    <meta name="author" content="Izz AL-Drrass">
+    
+    <title>Izz AL-Drrass | AI & Data Science Portfolio</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-  <aside class="sidebar">
-    <div class="sidebar-profile">
-      <img src="photo_2025-06-19_19-54-34.jpg" alt="Izz AL-Drrass" class="sidebar-img" />
-       
-      <h1 class="sidebar-name">Izz AL-Drrass</h1>
+<body data-theme="dark">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
     </div>
-    <div class="sidebar-social">
-      <a href="mailto:izzdrrass33@gmail.com" class="sidebar-icon" title="Gmail"><span class="icon-gmail">&#9993;</span></a>
-     <a href="https://www.facebook.com/" target="_blank" class="sidebar-icon" title="Facebook">
-  <img src="facebook.png" alt="Facebook Icon" class="social-icon">
-</a>
 
-<a href="https://www.linkedin.com/in/izz-al-drrass-20384a242" target="_blank" class="sidebar-icon" title="LinkedIn">
-  <img src="linkedin.png" alt="LinkedIn Icon" class="social-icon">
-</a>
-
-    </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#resume">Education</a></li>
-        <li><a href="#portfolio">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Izz AL-Drrass</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certificates" class="nav-link">Certificates</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><button class="theme-toggle" id="themeToggle"><i class="fas fa-sun"></i></button></li>
+            </ul>
+        </div>
     </nav>
-  </aside>
-  <main class="main-content">
-    <!-- Home Section -->
-    <section id="home" class="main-hero" style="background-image: url('photo_2025-07-09_23-09-40.jpg');">
-      <div class="main-hero-overlay">
-        <h1 class="main-hero-name">Izz AL-Drrass</h1>
-        <h2 class="main-hero-title">Artificial Intelligence & Data Science Graduate <span class="typing-cursor"></span></h2>
-        <blockquote class="main-hero-quote">Highly motivated and technically skilled Artificial Intelligence and Data Science graduate.</blockquote>
-        <a href="izzdrrass_cv_2025.pdf" target="_blank" class="sidebar-cv-btn">Hire Me</a>
 
-      </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="photo_2025-06-19_19-54-34.jpg" alt="Izz AL-Drrass" class="hero-img">
+            </div>
+            <div class="hero-text">
+                <h1 class="hero-title mono">
+                    <span class="terminal-prefix">></span> 
+                    <span id="typing-text"></span>
+                    <span class="cursor">_</span>
+                </h1>
+                <h2 class="hero-subtitle">AI & Data Science & Fullstack Web Developer</h2>
+                <p class="hero-description">
+                    <span class="mono">Building intelligent systems</span><br>
+                    <span class="mono">Building web applications</span>
+                </p>
+                <div class="hero-buttons">
+                    <a href="Izz_Drrass_Resume_FullStack_Dev.pdf" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
-    <hr class="section-divider">
+
     <!-- About Section -->
-    <section id="about" class="main-section">
-      <h2>About</h2>
-      <div class="about-flex">
-        <img src="photo_2025-06-19_19-54-34.jpg" alt="Profile" class="about-pic" />
-        <div class="about-text">
-          <p>A highly motivated and technically skilled Artificial Intelligence and Data Science graduate with a strong foundation in machine learning, data analytics, and algorithm development. Adept at leveraging AI techniques to solve complex problems and generate actionable insights.<br><br>
-          Demonstrated proficiency in developing predictive models, performing data analysis, and creating data-driven solutions. Seeking a challenging position to apply my knowledge and contribute to innovative projects in a collaborative environment.</p>
+    <section class="section" id="about">
+        <h2 class="section-title reveal">About Me</h2>
+        <p class="section-subtitle reveal">Passionate about AI and Data Science</p>
+        
+        <div class="about-content">
+            <div class="about-image reveal-left">
+                <img src="photo_2025-12-14_12-48-11.jpg" alt="Izz AL-Drrass" class="about-img">
+            </div>
+            <div class="about-text reveal-right">
+                <h3>AI & Data Science Graduate</h3>
+                <p>
+                   Full-Stack Web Developer with a solid foundation in Artificial
+Intelligence and Data Science, combining backend efficiency with
+intelligent frontend experiences. Proficient in building scalable web
+applications using PHP (Laravel), JavaScript, and MySQL, while
+leveraging AI-driven insights to enhance user interaction, automate
+workflows, and optimize system performance. Experienced in developing
+RESTful APIs, managing cloud infrastructure, and integrating secure,
+data-rich features such as real-time subscription tracking and in-app
+purchases. My academic training in AI enables me to embed predictive
+logic, data visualization, and intelligent automation directly into full-stack
+solutions—bridging the gap between robust software engineering and
+smart, data-informed design.
+  </p>
+                <p>
+                    Demonstrated proficiency in developing predictive models, performing data analysis, and 
+                    creating data-driven solutions. Seeking a challenging position to apply my knowledge and 
+                    contribute to innovative projects in a collaborative environment.
+                </p>
+            </div>
         </div>
-      </div>
     </section>
-    <hr class="section-divider">
 
-    <!-- Resume Section -->
-    <section id="resume" class="main-section">
-      <h2>Education</h2>
-      <div class="resume-flex">
-        <div class="resume-edu">
-          <h3>Education</h3>
-       
-         <div class="education-container">
-  <div class="text">
-    <p>
-      Bachelor of Artificial Intelligence and Data Science<br>
-      Tafila Technical University, Tafila, Jordan
-    </p>
-  </div>
-  <div class="logo-container">
-    <img src="tl.jpg" alt="Logo">
-  </div>
-</div>
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <h2 class="section-title reveal">Technical Skills</h2>
+        <p class="section-subtitle reveal">Technologies I work with</p>
+        
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3 class="skill-name">Programming</h3>
+                <p class="skill-level">Advanced</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-skill="90"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card reveal">
+                <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                <h3 class="skill-name">Machine Learning</h3>
+                <p class="skill-level">Advanced</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-skill="85"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card reveal">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3 class="skill-name">Data Analysis</h3>
+                <p class="skill-level">Advanced</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-skill="88"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card reveal">
+                <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+                <h3 class="skill-name">Big Data</h3>
+                <p class="skill-level">Intermediate</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-skill="75"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card reveal">
+                <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="skill-name">Visualization</h3>
+                <p class="skill-level">Advanced</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-skill="82"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card reveal">
+                <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="skill-name">Deep Learning</h3>
+                <p class="skill-level">Intermediate</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-skill="78"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card reveal">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3 class="skill-name">Frontend Development</h3>
+                <p class="skill-level">Advanced</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-skill="85"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card reveal">
+                <div class="skill-icon"><i class="fas fa-server"></i></div>
+                <h3 class="skill-name">Backend Development</h3>
+                <p class="skill-level">Advanced</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-skill="82"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <ul>
-            <li>Relevant Coursework: Machine Learning, Deep Learning, Data Mining, Natural Language Processing, Big Data Analytics, Statistical Methods, Programming in Python</li>
-          </ul>
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <h2 class="section-title reveal">Featured Projects</h2>
+        <p class="section-subtitle reveal">My recent work and achievements</p>
+        
+        <div class="projects-grid">
+            <div class="project-card reveal" onclick="openMdal('drone')">
+                <img src="Screenshot 2025-12-14 110349.png" alt="Drone Detection System" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Drone Detection System</h3>
+                    <p class="project-description">
+                        Developed an intelligent system for detecting and tracking drones in real-time 
+                        from live video using deep learning.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Deep Learning</span>
+                    </div>
+                    <div class="project-links">
+                           <a href="3izz/Drone-detection-system-border-camera-computer-vison" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card reveal" onclick="opeModal('disease')">
+                <img src="Screenshot 2025-11-05 150944.png" alt="Dafa Ecomerce" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Ecomerce Project</h3>
+                    <p class="project-description">
+                        Developed an ecomerce website using HTML, CSS, and JavaScript in front 
+                        and use backend techniques such as php and mysql to store and manage 
+                        the data of the website.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Html5</span>
+                        <span class="tag">Java script</span>
+                        <span class="tag">bootstrap</span>
+                        <span class="tag">php</span>
+                        <span class="tag">mysql</span>
+                        <span class="tag">css</span>
+                    </div>
+                    <div class="project-links">
+                       
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card reveal" onclick="openodal('fingerprint')">
+                <img src="Screenshot 2025-12-14 111803.png" alt="Fingerprint System" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Website to Test the IQ</h3>
+                    <p class="project-description">
+                        Designed a Quizz game for tes
+                    </p>ting the IQ for the employees 
+                    <div class="project-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">Java sqript </span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">Css</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://3izz.github.io/quizz-game/" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="https://github.com/3izz/quizz-game" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card reveal" onclick="opeModal('aircraft')">
+                <img src="Screenshot 2025-12-14 114826.png" alt="Aircraft Data System" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">MedFungi Insecta</h3>
+                    <p class="project-description">
+                       A knowledge-based website designed to answer inquiries related to medications, insects, and fungi, offering clear and organized information to support learning and informed understanding.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Html5</span>
+                        <span class="tag">java script</span>
+                        <span class="tag">css</span>
+                        <span class="tag">Bootstrap</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://3izz.github.io/insec-abu-salah/" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="https://github.com/3izz/fungi-abu-salahh" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal" onclick="opeModal('aircraft')">
+                <img src="Screenshot 2025-10-30 160622.png" alt="log detector" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Ai Log Detector System</h3>
+                    <p class="project-description">
+                       A log detection and analysis system designed to automatically identify, classify, and extract patterns from system and application logs. The project focuses on detecting anomalies, errors, and critical events using data analysis and machine learning techniques to support monitoring, debugging, and system reliability.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">PyQt5</span>
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">Python</span>
+                    </div>
+                    <div class="project-links">
+                         
+                </div>
+            </div>
         </div>
-        <div class="resume-tech">
-          <h3>Technical Skills</h3>
-          <ul>
-            <li>Programming Languages: Python, SQL, Java, C++</li>
-            <li>Machine Learning: Scikit-learn, TensorFlow</li>
-            <li>Data Analysis & Visualization: Pandas, NumPy, Matplotlib, Seaborn, Tkinter</li>
-            <li>Databases: MySQL, Oracle</li>
-            <li>Big Data Technologies: Hadoop, Spark, PySpark</li>
-            <li>Tools & Platforms: Jupyter Notebook</li>
-          </ul>
-        </div>
-        <div class="resume-soft">
-          <h3>Soft Skills</h3>
-          <ul>
-            <li>Communication skills</li>
-            <li>Time management</li>
-            <li>Data analysis (Excel, Python)</li>
-            <li>Critical thinking</li>
-            <li>Public speaking</li>
-            <li>Teamwork</li>
-          </ul>
-        </div>
-      </div>
     </section>
-    <hr class="section-divider">
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="main-section">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-         
-        <div class="project-card project-bg1">
-  <div class="project-img-blur"></div> <!-- هذه فيها الخلفية والغبشة -->
-  <div class="project-info">
-    <h3>Graduation Project: Drone Detection System</h3>
-    <p>Developed an intelligent system for detecting and tracking drones in real-time from live video using deep learning.</p>
-  </div>
-</div>
-<div class="project-card project-bg2">
-  <div class="project-img-blur"></div> <!-- هذه فيها الخلفية والغبشة -->
-  <div class="project-info">
-    <h3>Disease Prediction Model for Humans</h3>
-    <p>Developed a machine learning model to predict the likelihood of various diseases based on patient data.</p>
-  </div>
-</div>
-<div class="project-card project-bg3">
-  <div class="project-img-blur"></div> <!-- هذه فيها الخلفية والغبشة -->
-  <div class="project-info">
-    <h3>Criminal Fingerprint Tracking System</h3>
-    <p>Designed and implemented a fingerprint tracking system by erosion & dilation.</p>
-  </div>
-</div>
-<div class="project-card project-bg4">
-  <div class="project-img-blur"></div> <!-- هذه فيها الخلفية والغبشة -->
-  <div class="project-info">
-    <h3>Aircraft Data Retrieval System Around the World</h3>
-    <p>Developed a global aircraft data retrieval system to collect and analyze flight data from various sources.</p>
-  </div>
-</div>
-         
-      </div>
+
+    <!-- Certificates Section -->
+    <section class="section" id="certificates">
+        <h2 class="section-title reveal">Certificates & Achievements</h2>
+        <p class="section-subtitle reveal">Professional certifications and accomplishments</p>
+        
+        <div class="certificates-grid">
+            <div class="certificate-card reveal" onclick="openCertificateModal('cert1')">
+                <div class="certificate-image-container">
+                    <img src="Screenshot 2025-12-14 103227.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Data Analysis</h3>
+                    <p class="certificate-issuer">Google</p>
+                    <p class="certificate-date">Date: 2025</p>
+                    <div class="certificate-tags">
+                        <span class="tag">Professional</span>
+                        <span class="tag">Verified</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certificate-card reveal" onclick="openCertificateModal('cert2')">
+                <div class="certificate-image-container">
+                    <img src="Screenshot 2025-12-14 103351.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Generative AI</h3>
+                    <p class="certificate-issuer">udemy</p>
+                    <p class="certificate-date">Date: 2025</p>
+                    <div class="certificate-tags">
+                        <span class="tag">Technical</span>
+                        <span class="tag">Achievement</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certificate-card reveal" onclick="openCertificateModal('cert3')">
+                <div class="certificate-image-container">
+                    <img src="Screenshot 2025-12-14 103413.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Artificial Intelligence</h3>
+                    <p class="certificate-issuer">UDACITY</p>
+                    <p class="certificate-date">Date: 2025</p>
+                    <div class="certificate-tags">
+                        <span class="tag">Academic</span>
+                        <span class="tag">Excellence</span>
+                    </div>
+                </div>
+            </div>
+            <div class="certificate-card reveal" onclick="openCertificateModal('cert3')">
+                <div class="certificate-image-container">
+                    <img src="Screenshot 2025-12-14 103434.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Data Analysis</h3> 
+                    <p class="certificate-issuer">UDACITY</p>
+                    <p class="certificate-date">Date: 2025</p>
+                    <div class="certificate-tags">
+                        <span class="tag">Academic</span>
+                        <span class="tag">Excellence</span>
+                    </div>
+                </div>
+            </div>
+            <div class="certificate-card reveal" onclick="openCertificateModal('cert3')">
+                <div class="certificate-image-container">
+                    <img src="Screenshot 2025-12-14 103507.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Databases</h3>
+                    <p class="certificate-issuer">Meta</p>
+                    <p class="certificate-date">Date: 2025</p>
+                    <div class="certificate-tags">
+                        <span class="tag">Academic</span>
+                        <span class="tag">Excellence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    <hr class="section-divider">
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <h2 class="section-title reveal">Education & Experience</h2>
+        <p class="section-subtitle reveal">My academic and professional journey</p>
+        
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020 - 2024</div>
+                    <h3 class="timeline-title">Bachelor of AI & Data Science</h3>
+                    <p class="timeline-description">
+                        Tafila Technical University, Tafila, Jordan<br>
+                        Relevant Coursework: Machine Learning, Deep Learning, Data Mining, 
+                        Natural Language Processing, Big Data Analytics, Statistical Methods, 
+                        Programming in Python
+                    </p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <div class="timeline-date">2023 - 2025</div>
+                    <h3 class="timeline-title">Full Stack Web Developer</h3>
+                    <p class="timeline-description">
+                        Full Stack Web Developer | Open Source IT Company
+ 
+• Developed and maintained RESTful APIs to enable smooth
+communication between web and mobile platforms.
+• Integrated and optimized in-app purchase systems, ensuring secure and
+efficient payment processing.
+• Implemented webhook-based automation to manage and update
+subscription data in real time.
+• Provided hands-on technical support and troubleshooting, improving
+system stability and user experience.
+• Managed server migration projects, achieving seamless transitions with
+minimal downtime and improved performance.
+• Worked on the Dafa eCommerce platform, contributing to its fullstack development and feature implementation</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 - present</div>
+                    <h3 class="timeline-title">Freelance AI Developer</h3>
+                    <p class="timeline-description">
+                        Freelance AI Developer specializing in designing and building custom artificial intelligence and machine learning solutions. Experienced in developing intelligent systems, data-driven models, and real-world AI applications tailored to client requirements, with a strong focus on efficiency, scalability, and reliability.   </p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="main-section">
-      <h2>Contact</h2>
-      <div class="contact-flex">
-        <div class="contact-info">
-          <p><strong>Phone:</strong> +962795119869</p>
-          <p><strong>Email:</strong> izzdrrass33@gmail.com</p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/izz-al-drrass-20384a242" target="_blank">izz-al-drrass</a></p>
-          <p><strong>Location:</strong> Amman, Jordan</p>
+    <section class="section" id="contact">
+        <h2 class="section-title reveal">Get In Touch</h2>
+        <p class="section-subtitle reveal">Let's connect and discuss opportunities</p>
+        
+        <div class="contact-content">
+            <div class="contact-info reveal-left">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+962 795 119 869</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>izzdrrass33@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Amman, Jordan</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                    <div>
+                        <h4>LinkedIn</h4>
+                        <p>linkedin.com/in/izz-al-drrass</p>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form reveal-right" id="contactForm">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-input" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" class="form-input" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" class="form-textarea" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
         </div>
-        <form class="contact-form">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit" class="btn">Send</button>
-        </form>
-      </div>
     </section>
-  </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/izz-al-drrass-20384a242" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.facebook.com/share/17Z26t5VY6/?mibextid=wwXIfr" target="_blank" class="social-link">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="mailto:izzdrrass33@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/3izz" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p class="footer-text">
+                © 2025 Izz AL-Drrass. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Certificate Modal -->
+    <div class="modal" id="certificateModal">
+        <div class="modal-content certificate-modal-content">
+            <button class="modal-close" onclick="closeCertificateModal()">&times;</button>
+            <div class="modal-body" id="certificateModalBody">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
