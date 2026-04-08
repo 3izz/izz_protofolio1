@@ -205,11 +205,20 @@ body {
   filter: brightness(1.2);
 }
 
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  align-items: center;
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: var(--transition-smooth);
+  padding: 0.5rem 1rem;
+
+  /* التأثير اللي بدك اياه */
+  background: rgba(255, 255, 255, 0.1); /* شفافية */
+  backdrop-filter: blur(10px); /* تغبيش الخلفية */
+  -webkit-backdrop-filter: blur(10px); /* دعم سفاري */
+
+  border-radius: 10px; /* شكل حلو */
 }
 
 .nav-link {
