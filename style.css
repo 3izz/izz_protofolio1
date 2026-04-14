@@ -205,20 +205,14 @@ body {
   filter: brightness(1.2);
 }
 
-.nav-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  transition: var(--transition-smooth);
-  padding: 0.5rem 1rem;
-
-  /* التأثير اللي بدك اياه */
-  background: rgba(255, 255, 255, 0.1); /* شفافية */
-  backdrop-filter: blur(10px); /* تغبيش الخلفية */
-  -webkit-backdrop-filter: blur(10px); /* دعم سفاري */
-
-  border-radius: 10px; /* شكل حلو */
+/* Desktop nav-links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
@@ -254,6 +248,99 @@ body {
 
 .nav-link.active {
   color: var(--primary-accent);
+}
+
+/* Hamburger button - hidden on desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  z-index: 1100;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--primary-accent);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+}
+
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav */
+@media (max-width: 900px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    /* iOS-style frosted glass */
+    background: rgba(11, 15, 14, 0.55);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: none;
+    z-index: 1050;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  [data-theme="light"] .nav-links {
+    background: rgba(230, 241, 236, 0.6);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    font-size: 1.3rem;
+    padding: 0.75rem 2rem;
+    display: block;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-link:hover {
+    transform: none;
+    color: var(--primary-accent);
+  }
 }
 
 .theme-toggle {
@@ -1092,14 +1179,6 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nav-links {
-    gap: 1rem;
-  }
-  
-  .nav-link {
-    font-size: 0.9rem;
-  }
-  
   .hero-content {
     flex-direction: column;
     text-align: center;
