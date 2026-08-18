@@ -1,5 +1,15 @@
 // Portfolio Website JavaScript
 document.addEventListener('DOMContentLoaded', function() {
+    // Keyboard activation for clickable cards (role="button")
+    document.querySelectorAll('[role="button"][tabindex="0"]').forEach(el => {
+        el.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                el.click();
+            }
+        });
+    });
+
     // Preloader
     const preloader = document.getElementById('preloader');
     if (preloader) {
@@ -186,9 +196,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Show success message
             showNotification('Email client opened! Please send the message.', 'success');
-            
+
             // Clear form
-            contactFormHandler.reset();
+            contactForm.reset();
         });
     }
     
@@ -241,50 +251,34 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
     const certificateModal = document.getElementById('certificateModal');
     const certificateModalBody = document.getElementById('certificateModalBody');
-    
-    // Certificate data
-    const certificateData = {
-        cert1: {
-            title: 'Certificate Title',
-            image: 'certificate1.jpg',
-            issuer: 'Issuing Organization',
-            date: '2024',
-            description: 'Professional certification demonstrating expertise in the field.'
-        },
-        cert2: {
-            title: 'Certificate Title',
-            image: 'certificate2.jpg',
-            issuer: 'Issuing Organization',
-            date: '2024',
-            description: 'Technical certification validating specialized skills and knowledge.'
-        },
-        cert3: {
-            title: 'Certificate Title',
-            image: 'certificate3.jpg',
-            issuer: 'Issuing Organization',
-            date: '2024',
-            description: 'Academic certificate recognizing excellence and achievement.'
-        }
-    };
 
-    // Open certificate modal function
-    window.openCertificateModal = function(certificateId) {
-        const certificate = certificateData[certificateId];
-        if (!certificate) return;
-        
+    // Open certificate modal function — reads the real data straight off the
+    // clicked card so the modal always matches what's shown in the grid.
+    window.openCertificateModal = function(cardEl) {
+        if (!cardEl || !cardEl.querySelector) return;
+
+        const img = cardEl.querySelector('.certificate-image');
+        const title = cardEl.querySelector('.certificate-title')?.textContent.trim() || 'Certificate';
+        const issuer = cardEl.querySelector('.certificate-issuer')?.textContent.trim() || '';
+        const date = cardEl.querySelector('.certificate-date')?.textContent.trim() || '';
+        const tags = Array.from(cardEl.querySelectorAll('.certificate-tags .tag'))
+            .map(tag => `<span class="tag">${tag.textContent.trim()}</span>`)
+            .join('');
+        const imageSrc = img ? img.src : '';
+
         const modalContent = `
-            <img src="${certificate.image}" alt="${certificate.title}" class="certificate-modal-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlIEltYWdlPC90ZXh0Pjwvc3ZnPg==';">
-            <h2>${certificate.title}</h2>
-            <p><strong>Issued by:</strong> ${certificate.issuer}</p>
-            <p><strong>Date:</strong> ${certificate.date}</p>
-            <p>${certificate.description}</p>
+            <img src="${imageSrc}" alt="${title}" class="certificate-modal-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlIEltYWdlPC90ZXh0Pjwvc3ZnPg==';">
+            <h2>${title}</h2>
+            <p><strong>Issued by:</strong> ${issuer}</p>
+            <p>${date}</p>
+            <div class="certificate-tags">${tags}</div>
             <div class="modal-actions">
-                <a href="${certificate.image}" download="${certificate.title.replace(/\s+/g, '_')}.jpg" class="btn btn-primary">
+                <a href="${imageSrc}" download="${title.replace(/\s+/g, '_')}.png" class="btn btn-primary">
                     <i class="fas fa-download"></i> Download Certificate
                 </a>
             </div>
         `;
-        
+
         certificateModalBody.innerHTML = modalContent;
         certificateModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -318,6 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Drone Detection System',
             image: 'Drone Detection Syst.png',
             description: 'Developed an intelligent system for detecting and tracking drones in real-time from live video using deep learning techniques.',
+            link: 'https://github.com/3izz/Drone-detection-system-border-camera-computer-vison',
             details: `
                 <h3>Project Overview</h3>
                 <p>This advanced drone detection system uses state-of-the-art computer vision and deep learning algorithms to identify and track drones in real-time video streams.</p>
@@ -445,15 +440,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 ${project.details}
             </div>
             <div class="modal-actions">
-                <a href="#" class="btn btn-primary">
-                    <i class="fas fa-external-link-alt"></i> Live Demo
-                </a>
-                <a href="#" class="btn btn-secondary">
+                <a href="${project.link || '#'}" target="_blank" rel="noopener" class="btn btn-primary">
                     <i class="fab fa-github"></i> View Code
                 </a>
             </div>
         `;
-        
+
         modalBody.innerHTML = modalContent;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -479,31 +471,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Contact form handling
-    const contactFormHandler = document.getElementById('contactForm');
-    if (contactFormHandler) {
-        contactFormHandler.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactFormHandler);
-            const name = contactFormHandler.querySelector('input[type="text"]').value;
-            const email = contactFormHandler.querySelector('input[type="email"]').value;
-            const subject = contactFormHandler.querySelectorAll('input[type="text"]')[1].value;
-            const message = contactFormHandler.querySelector('textarea').value;
-            
-            // Basic validation
-            if (!name || !email || !subject || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // Here you would normally send the data to a server
-            // For now, we'll show a success message
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
-    }
 
     // Initialize everything
     highlightActiveNav();

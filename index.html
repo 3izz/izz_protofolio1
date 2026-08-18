@@ -46,7 +46,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">Izz AL-Drrass</div>
-            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+            <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
@@ -205,12 +205,13 @@
         <p class="section-subtitle reveal">My recent work and achievements</p>
         
         <div class="projects-grid">
-            <div class="project-card reveal" onclick="openMdal('drone')">
+            <div class="project-card featured reveal" onclick="openModal('drone')" tabindex="0" role="button">
+                <span class="project-badge">Featured</span>
                 <img src="Screenshot 2025-12-14 110349.png" alt="Drone Detection System" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Drone Detection System</h3>
                     <p class="project-description">
-                        Developed an intelligent system for detecting and tracking drones in real-time 
+                        Developed an intelligent system for detecting and tracking drones in real-time
                         from live video using deep learning.
                     </p>
                     <div class="project-tags">
@@ -220,12 +221,12 @@
                         <span class="tag">Deep Learning</span>
                     </div>
                     <div class="project-links">
-                           <a href="3izz/Drone-detection-system-border-camera-computer-vison" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                           <a href="https://github.com/3izz/Drone-detection-system-border-camera-computer-vison" class="project-link" onclick="event.stopPropagation()"><i class="fab fa-github"></i> GitHub</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="project-card reveal" onclick="opeModal('disease')">
+
+            <div class="project-card reveal">
                 <img src="Screenshot 2025-11-05 150944.png" alt="Dafa Ecomerce" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Ecomerce Project</h3>
@@ -248,7 +249,7 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card reveal" onclick="opeModal('disease')">
+            <div class="project-card reveal">
                 <img src="Screenshot 2026-05-13 150123.png" alt="Dafa Ecomerce" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Jmooh Ai</h3>
@@ -269,13 +270,13 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card reveal" onclick="openodal('fingerprint')">
+            <div class="project-card reveal">
                 <img src="Screenshot 2025-12-14 111803.png" alt="Fingerprint System" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Website to Test the IQ</h3>
                     <p class="project-description">
-                        Designed a Quizz game for tes
-                    </p>ting the IQ for the employees 
+                        Designed a Quizz game for testing the IQ for the employees
+                    </p>
                     <div class="project-tags">
                         <span class="tag">HTML5</span>
                         <span class="tag">Java sqript </span>
@@ -288,13 +289,13 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card reveal" onclick="openodal('fingerprint')">
+            <div class="project-card reveal">
                 <img src="Screenshot 2026-04-21 001511.png" alt="Fingerprint System" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Website to Strawberry agriculture</h3>
                     <p class="project-description">
-                        Designed A Website To sup 
-                    </p>pport strawberry farming consultations in Jordan
+                        Designed a website to support strawberry farming consultations in Jordan
+                    </p>
                     <div class="project-tags">
                         <span class="tag">HTML5</span>
                         <span class="tag">Java sqript </span>
@@ -307,7 +308,7 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card reveal" onclick="opeModal('aircraft')">
+            <div class="project-card reveal">
                 <img src="Screenshot 2025-12-14 114826.png" alt="Aircraft Data System" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">MedFungi Insecta</h3>
@@ -326,7 +327,7 @@
                     </div>
                 </div>
             </div>
-           <div class="project-card reveal" onclick="opeModal('aircraft')">
+           <div class="project-card reveal">
     <img src="Screenshot 2025-10-30 160622.png" alt="log detector" class="project-image">
     <div class="project-content">
         <h3 class="project-title">Ai Log Detector System</h3>
@@ -344,7 +345,7 @@
     </div>
 </div>
 
-<div class="project-card reveal" onclick="opeModal('izz')">
+<div class="project-card reveal">
     <img src="Screenshot 2026-04-29 090944.png" alt="izz" class="project-image">
     <div class="project-content">
         <h3 class="project-title">Luxury Surface</h3>
@@ -370,7 +371,7 @@
         <p class="section-subtitle reveal">Professional certifications and accomplishments</p>
         
         <div class="certificates-grid">
-            <div class="certificate-card reveal" onclick="openCertificateModal('cert1')">
+            <div class="certificate-card reveal" onclick="openCertificateModal(this)" tabindex="0" role="button">
                 <div class="certificate-image-container">
                     <img src="Screenshot 2025-12-14 103227.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
                 </div>
@@ -385,7 +386,7 @@
                 </div>
             </div>
             
-            <div class="certificate-card reveal" onclick="openCertificateModal('cert2')">
+            <div class="certificate-card reveal" onclick="openCertificateModal(this)" tabindex="0" role="button">
                 <div class="certificate-image-container">
                     <img src="Screenshot 2025-12-14 103351.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
                 </div>
@@ -400,9 +401,9 @@
                 </div>
             </div>
          
-             <div class="certificate-card reveal" onclick="openCertificateModal('cert2')">
+             <div class="certificate-card reveal" onclick="openCertificateModal(this)" tabindex="0" role="button">
                 <div class="certificate-image-container">
-                    <img src="Screenshot 2026-04-03 115939.png" alt="Certificate" class="certificate-image" onerror="this.src='https://www.life-global.org/certificate/82f77213-35a0-430b-83e9-a3585d78040b">
+                    <img src="Screenshot 2026-04-03 115939.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
                 </div>
                 <div class="certificate-content">
                     <h3 class="certificate-title">Agile Project Management</h3>
@@ -414,7 +415,7 @@
                     </div>
                 </div>
             </div>
-            <div class="certificate-card reveal" onclick="openCertificateModal('cert3')">
+            <div class="certificate-card reveal" onclick="openCertificateModal(this)" tabindex="0" role="button">
                 <div class="certificate-image-container">
                     <img src="Screenshot 2025-12-14 103413.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
                 </div>
@@ -428,7 +429,7 @@
                     </div>
                 </div>
             </div>
-            <div class="certificate-card reveal" onclick="openCertificateModal('cert3')">
+            <div class="certificate-card reveal" onclick="openCertificateModal(this)" tabindex="0" role="button">
                 <div class="certificate-image-container">
                     <img src="Screenshot 2025-12-14 103434.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
                 </div>
@@ -442,9 +443,9 @@
                     </div>
                 </div>
             </div>
-         <div class="certificate-card reveal" onclick="openCertificateModal('cert3')">
+         <div class="certificate-card reveal" onclick="openCertificateModal(this)" tabindex="0" role="button">
                 <div class="certificate-image-container">
-                    <img src="Screenshot 2026-04-03 120002.png" alt="Certificate" class="certificate-image" onerror="https://www.life-global.org/certificate/8d1d3978-d670-4382-8a07-a9c7251d02c1">
+                    <img src="Screenshot 2026-04-03 120002.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
                 </div>
                 <div class="certificate-content">
                     <h3 class="certificate-title">Data Science & Analytics</h3> 
@@ -456,7 +457,7 @@
                     </div>
                 </div>
             </div>
-            <div class="certificate-card reveal" onclick="openCertificateModal('cert3')">
+            <div class="certificate-card reveal" onclick="openCertificateModal(this)" tabindex="0" role="button">
                 <div class="certificate-image-container">
                     <img src="Screenshot 2025-12-14 103507.png" alt="Certificate" class="certificate-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlPC90ZXh0Pjwvc3ZnPg==';">
                 </div>
@@ -647,17 +648,43 @@
       const hamburger = document.getElementById('navHamburger');
       const navLinks = document.getElementById('navLinks');
 
+      function openMobileMenu() {
+        hamburger.classList.add('open');
+        navLinks.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
       hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        navLinks.classList.toggle('open');
+        if (navLinks.classList.contains('open')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
       });
 
       // Close menu when a link is clicked
       navLinks.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('open');
-          navLinks.classList.remove('open');
-        });
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      // Close menu when tapping the overlay background (not a link/button)
+      navLinks.addEventListener('click', (e) => {
+        if (e.target === navLinks) closeMobileMenu();
+      });
+
+      // Close menu on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+          closeMobileMenu();
+        }
       });
     </script>
 </body>
