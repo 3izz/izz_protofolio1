@@ -1,5 +1,24 @@
 // Portfolio Website JavaScript
 document.addEventListener('DOMContentLoaded', function() {
+    // Scroll progress bar
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', function() {
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+            scrollProgress.style.width = progress + '%';
+        }, { passive: true });
+    }
+
+    // Cursor-tracked spotlight glow on cards
+    document.querySelectorAll('.project-card, .certificate-card, .skill-card').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+            card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+        });
+    });
+
     // Keyboard activation for clickable cards (role="button")
     document.querySelectorAll('[role="button"][tabindex="0"]').forEach(el => {
         el.addEventListener('keydown', function(e) {
