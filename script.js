@@ -64,27 +64,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // real content already on this page (About/Skills/Projects/
         // Certificates/Experience/Contact). No external API is called,
         // so there's no key to expose and no cost per message.
+        // Ordered from most specific to most generic — a message can contain
+        // filler words like "about" or "work" alongside a specific keyword
+        // (e.g. "tell me about the pos system"), so narrow topics are checked
+        // first and only fall through to broad ones like About/Projects last.
         const knowledge = [
-            { keys: ['hello', 'hi', 'hey', 'marhaba', 'مرحبا'],
-              reply: "Hey! 👋 I'm Izz AI — ask me about Izz's projects, skills, experience, certificates, or how to reach him." },
-            { keys: ['about', 'who', 'background', 'bio'],
-              reply: "Izz is an AI Engineer & Full-Stack Web Developer focused on AI, LLMs and Data Science — working with Hugging Face, model fine-tuning, and local inference with LM Studio. He also builds full-stack apps with PHP (Laravel), JavaScript and MySQL, and holds a Bachelor's in AI & Data Science from Tafila Technical University." },
-            { keys: ['skill', 'stack', 'technolog', 'language', 'programming'],
-              reply: "Core skills: Programming, Frontend & Backend Development, Machine Learning and Data Analysis (all Advanced), plus Deep Learning, Big Data and Visualization. Full breakdown is in the Skills section above." },
-            { keys: ['project', 'work', 'built', 'build'],
-              reply: "Highlights: the Drone Detection System (real-time YOLO-based detection — his featured project), an AI Log Detector, Jmooh AI, and several full-stack sites like agroberry.online, an e-commerce store, a quiz game, and MedFungi Insecta. See the Projects section for live/GitHub links." },
             { keys: ['drone'],
               reply: "The Drone Detection System uses Python, TensorFlow and computer vision to detect and track drones in real time from live video — it's the featured project card in the Projects section." },
+            { keys: ['pos', 'yazori', 'supermarket'],
+              reply: "The Al-Yazori Market project is a fully offline point-of-sale system for a real neighborhood supermarket — built with Laravel, PHP and SQLite, running entirely on a local Windows machine with no internet dependency." },
             { keys: ['certificate', 'certification', 'course'],
               reply: "Izz holds certificates from Google (Data Analysis), Udemy (Generative AI), Udacity (AI & Data Analysis), HP (Agile Project Management, Data Science & Analytics) and Meta (Databases) — see the Certificates section." },
-            { keys: ['experience', 'job', 'career', 'timeline', 'education'],
-              reply: "Bachelor of AI & Data Science, Tafila Technical University (2021–2025) → freelance AI Developer (2025–2026) building custom ML solutions → currently an AI Engineer in the government sector since 2026." },
             { keys: ['cv', 'resume'],
               reply: "You can grab the CV from the About section above — there's a Download CV button right under the bio." },
             { keys: ['contact', 'email', 'phone', 'hire', 'reach', 'linkedin'],
               reply: "Best ways to reach Izz: 📧 izzdrrass33@gmail.com · 📞 +962 795 119 869 · LinkedIn: linkedin.com/in/izz-al-drrass. Based in Amman, Jordan." },
+            { keys: ['experience', 'career', 'timeline', 'education'],
+              reply: "Bachelor of AI & Data Science, Tafila Technical University (2021–2025) → freelance AI Developer (2025–2026) building custom ML solutions → currently an AI Engineer in the government sector since 2026." },
+            { keys: ['skill', 'stack', 'technolog', 'language', 'programming'],
+              reply: "Core skills: Programming, Frontend & Backend Development, Machine Learning and Data Analysis (all Advanced), plus Deep Learning, Big Data and Visualization. Full breakdown is in the Skills section above." },
+            { keys: ['project', 'portfolio', 'built', 'build'],
+              reply: "Highlights: the Drone Detection System (real-time YOLO-based detection — his featured project), an offline Laravel/SQLite POS system built for a real supermarket, an AI Log Detector, Jmooh AI, and several full-stack sites like agroberry.online, an e-commerce store, a quiz game, and MedFungi Insecta. See the Projects section for live/GitHub links." },
+            { keys: ['about', 'background', 'bio'],
+              reply: "Izz is an AI Engineer & Full-Stack Web Developer focused on AI, LLMs and Data Science — working with Hugging Face, model fine-tuning, and local inference with LM Studio. He also builds full-stack apps with PHP (Laravel), JavaScript and MySQL, and holds a Bachelor's in AI & Data Science from Tafila Technical University." },
             { keys: ['thank', 'shukran'],
-              reply: "You're welcome! Feel free to ask anything else, or reach out directly via the Contact section. 🙌" }
+              reply: "You're welcome! Feel free to ask anything else, or reach out directly via the Contact section. 🙌" },
+            { keys: ['hello', 'hi', 'hey', 'marhaba', 'مرحبا'],
+              reply: "Hey! 👋 I'm Izz AI — ask me about Izz's projects, skills, experience, certificates, or how to reach him." }
         ];
 
         function findReply(text) {
@@ -100,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 if (isMatch) return knowledge[i].reply;
             }
-            return "I'm Izz AI — I can chat about Izz's projects, skills, certificates, experience, or how to get in touch. Try one of the topics below.";
+            return "That's outside what I can cover right now — you're seeing an early preview of Izz AI while the full custom language model is being integrated. In the meantime, ask me about Izz's projects, skills, certificates, experience, or how to get in touch.";
         }
 
         function addMessage(text, sender) {
