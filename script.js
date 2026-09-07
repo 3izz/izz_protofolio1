@@ -19,6 +19,176 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // ============================
+    // Izz AI Assistant
+    // ============================
+    (function initIzzAi() {
+        const trigger = document.getElementById('izzAiTrigger');
+        const panel = document.getElementById('izzAiPanel');
+        const backdrop = document.getElementById('izzAiBackdrop');
+        const closeBtn = document.getElementById('izzAiClose');
+        const loaderLetters = document.getElementById('izzAiLoaderLetters');
+        const messages = document.getElementById('izzAiMessages');
+        const form = document.getElementById('izzAiForm');
+        const input = document.getElementById('izzAiInput');
+
+        if (!trigger || !panel) return;
+
+        let introPlayed = false;
+        let isOpen = false;
+
+        // Word-by-word intro sequence inside the loader ring
+        function playIntro(onDone) {
+            const phrases = ['Welcome', 'to', "Izz's", 'AI'];
+            let i = 0;
+
+            function showNext() {
+                loaderLetters.innerHTML = '';
+                phrases[i].split('').forEach((ch, idx) => {
+                    const span = document.createElement('span');
+                    span.textContent = ch;
+                    span.style.animationDelay = (idx * 0.08) + 's';
+                    loaderLetters.appendChild(span);
+                });
+                i++;
+                if (i < phrases.length) {
+                    setTimeout(showNext, 650);
+                } else {
+                    setTimeout(onDone, 900);
+                }
+            }
+            showNext();
+        }
+
+        // Small local knowledge base — answers are drawn only from the
+        // real content already on this page (About/Skills/Projects/
+        // Certificates/Experience/Contact). No external API is called,
+        // so there's no key to expose and no cost per message.
+        const knowledge = [
+            { keys: ['hello', 'hi', 'hey', 'marhaba', 'مرحبا'],
+              reply: "Hey! 👋 I'm Izz AI — ask me about Izz's projects, skills, experience, certificates, or how to reach him." },
+            { keys: ['about', 'who', 'background', 'bio'],
+              reply: "Izz is an AI Engineer & Full-Stack Web Developer focused on AI, LLMs and Data Science — working with Hugging Face, model fine-tuning, and local inference with LM Studio. He also builds full-stack apps with PHP (Laravel), JavaScript and MySQL, and holds a Bachelor's in AI & Data Science from Tafila Technical University." },
+            { keys: ['skill', 'stack', 'technolog', 'language', 'programming'],
+              reply: "Core skills: Programming, Frontend & Backend Development, Machine Learning and Data Analysis (all Advanced), plus Deep Learning, Big Data and Visualization. Full breakdown is in the Skills section above." },
+            { keys: ['project', 'work', 'built', 'build'],
+              reply: "Highlights: the Drone Detection System (real-time YOLO-based detection — his featured project), an AI Log Detector, Jmooh AI, and several full-stack sites like agroberry.online, an e-commerce store, a quiz game, and MedFungi Insecta. See the Projects section for live/GitHub links." },
+            { keys: ['drone'],
+              reply: "The Drone Detection System uses Python, TensorFlow and computer vision to detect and track drones in real time from live video — it's the featured project card in the Projects section." },
+            { keys: ['certificate', 'certification', 'course'],
+              reply: "Izz holds certificates from Google (Data Analysis), Udemy (Generative AI), Udacity (AI & Data Analysis), HP (Agile Project Management, Data Science & Analytics) and Meta (Databases) — see the Certificates section." },
+            { keys: ['experience', 'job', 'career', 'timeline', 'education'],
+              reply: "Bachelor of AI & Data Science, Tafila Technical University (2021–2025) → freelance AI Developer (2025–2026) building custom ML solutions → currently an AI Engineer in the government sector since 2026." },
+            { keys: ['cv', 'resume'],
+              reply: "You can grab the CV from the About section above — there's a Download CV button right under the bio." },
+            { keys: ['contact', 'email', 'phone', 'hire', 'reach', 'linkedin'],
+              reply: "Best ways to reach Izz: 📧 izzdrrass33@gmail.com · 📞 +962 795 119 869 · LinkedIn: linkedin.com/in/izz-al-drrass. Based in Amman, Jordan." },
+            { keys: ['thank', 'shukran'],
+              reply: "You're welcome! Feel free to ask anything else, or reach out directly via the Contact section. 🙌" }
+        ];
+
+        function findReply(text) {
+            // Word-boundary matching: short keys (e.g. "hi", "cv") must match a
+            // whole word exactly, otherwise they false-positive inside unrelated
+            // words (e.g. "hi" inside "him"). Longer keys may match as a stem
+            // inside a word so "projects"/"project" both hit the same topic.
+            const words = text.toLowerCase().split(/[^a-z']+/).filter(Boolean);
+            for (let i = 0; i < knowledge.length; i++) {
+                const isMatch = knowledge[i].keys.some(function(k) {
+                    if (k.length <= 3) return words.includes(k);
+                    return words.some(function(w) { return w.length >= 4 && w.includes(k); });
+                });
+                if (isMatch) return knowledge[i].reply;
+            }
+            return "I'm Izz AI — I can chat about Izz's projects, skills, certificates, experience, or how to get in touch. Try one of the topics below.";
+        }
+
+        function addMessage(text, sender) {
+            const el = document.createElement('div');
+            el.className = 'izz-ai-msg ' + sender;
+            el.textContent = text;
+            messages.appendChild(el);
+            messages.scrollTop = messages.scrollHeight;
+            return el;
+        }
+
+        function addChips(topics) {
+            const wrap = document.createElement('div');
+            wrap.className = 'izz-ai-chips';
+            topics.forEach(t => {
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'izz-ai-chip';
+                chip.textContent = t;
+                chip.addEventListener('click', () => handleUserMessage(t));
+                wrap.appendChild(chip);
+            });
+            messages.appendChild(wrap);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function seedWelcome() {
+            addMessage("Hi, I'm Izz AI 👋 Ask me about Izz's projects, skills, experience, or how to get in touch.", 'bot');
+            addChips(['Projects', 'Skills', 'Experience', 'Contact']);
+        }
+
+        function handleUserMessage(raw) {
+            const text = raw.trim();
+            if (!text) return;
+            addMessage(text, 'user');
+            input.value = '';
+
+            const typing = document.createElement('div');
+            typing.className = 'izz-ai-msg bot typing';
+            typing.innerHTML = '<span></span><span></span><span></span>';
+            messages.appendChild(typing);
+            messages.scrollTop = messages.scrollHeight;
+
+            setTimeout(() => {
+                typing.remove();
+                addMessage(findReply(text), 'bot');
+            }, 500 + Math.random() * 400);
+        }
+
+        function openIzzAi() {
+            panel.classList.add('active');
+            panel.setAttribute('aria-hidden', 'false');
+            backdrop.classList.add('active');
+            isOpen = true;
+
+            if (!introPlayed) {
+                panel.classList.remove('show-chat');
+                playIntro(() => {
+                    panel.classList.add('show-chat');
+                    introPlayed = true;
+                    if (!messages.childElementCount) seedWelcome();
+                    input.focus();
+                });
+            } else {
+                panel.classList.add('show-chat');
+                input.focus();
+            }
+        }
+
+        function closeIzzAi() {
+            panel.classList.remove('active');
+            panel.setAttribute('aria-hidden', 'true');
+            backdrop.classList.remove('active');
+            isOpen = false;
+        }
+
+        trigger.addEventListener('click', openIzzAi);
+        closeBtn.addEventListener('click', closeIzzAi);
+        backdrop.addEventListener('click', closeIzzAi);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isOpen) closeIzzAi();
+        });
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleUserMessage(input.value);
+        });
+    })();
+
     // Keyboard activation for clickable cards (role="button")
     document.querySelectorAll('[role="button"][tabindex="0"]').forEach(el => {
         el.addEventListener('keydown', function(e) {
