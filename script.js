@@ -538,16 +538,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 <h3>Tech Stack</h3>
                 <table class="tech-table">
-                    <tr><th>Framework</th><td>Laravel 12 on PHP 8.2, with a clean architecture of service classes, Form Requests and Policies</td></tr>
+                    <tr><th>Framework</th><td>Laravel 12 (PHP), with a clean architecture of service classes, Form Requests and Policies</td></tr>
                     <tr><th>Database</th><td>MySQL 8 (InnoDB, utf8mb4) with 50+ versioned migrations</td></tr>
                     <tr><th>Frontend</th><td>Blade + Livewire 3, Alpine.js and Tailwind CSS, built with Vite; fully RTL</td></tr>
                     <tr><th>Auth &amp; RBAC</th><td>Laravel Breeze plus spatie/laravel-permission for roles and permissions</td></tr>
                     <tr><th>Documents</th><td>mPDF + ar-php for correctly shaped Arabic PDFs; signature_pad canvas signatures</td></tr>
                     <tr><th>Assets &amp; Data</th><td>simple-qrcode for QR tags, maatwebsite/excel for import/export</td></tr>
-                    <tr><th>Reliability</th><td>spatie/laravel-activitylog (audit trail), spatie/laravel-backup, queued jobs on Supervisor workers</td></tr>
+                    <tr><th>Reliability</th><td>spatie/laravel-activitylog (audit trail), spatie/laravel-backup, queued background jobs</td></tr>
                     <tr><th>Email</th><td>Resend for transactional notifications</td></tr>
                     <tr><th>Testing</th><td>Pest / PHPUnit feature tests, Laravel Pint for code style</td></tr>
-                    <tr><th>Deployment</th><td>Linux VPS: Ubuntu, Nginx, PHP-FPM, MySQL and Let's Encrypt SSL</td></tr>
+                    <tr><th>Deployment</th><td>Linux VPS with SSL</td></tr>
                 </table>
 
                 <h3>Outcome</h3>
