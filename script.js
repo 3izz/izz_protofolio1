@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { keys: ['pos', 'yazori', 'supermarket'],
               reply: "The Al-Yazori Market project is a fully offline point-of-sale system for a real neighborhood supermarket — built with Laravel, PHP and SQLite, running entirely on a local Windows machine with no internet dependency." },
             { keys: ['certificate', 'certification', 'course'],
-              reply: "Izz holds certificates from Anthropic (AI Fluency: Framework & Foundations), Google (Data Analysis), Udemy (Generative AI), Udacity (AI & Data Analysis), HP (Agile Project Management, Data Science & Analytics) and Meta (Databases) — see the Certificates section." },
+              reply: "Izz holds certificates from Anthropic (AI Fluency: Framework & Foundations, and Claude 101), Google (Data Analysis), Udemy (Generative AI), Udacity (AI & Data Analysis), HP (Agile Project Management, Data Science & Analytics) and Meta (Databases) — see the Certificates section." },
             { keys: ['cv', 'resume'],
               reply: "You can grab the CV from the About section above — there's a Download CV button right under the bio." },
             { keys: ['contact', 'email', 'phone', 'hire', 'reach', 'linkedin'],
