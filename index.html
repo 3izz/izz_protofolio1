@@ -217,6 +217,62 @@
         <p class="section-subtitle reveal">My recent work and achievements</p>
         
         <div class="projects-grid">
+            <!-- AMS — dot Jordan (client showcase card) -->
+            <article class="project-card showcase reveal" aria-labelledby="amsTitle">
+                <div class="showcase-media">
+                    <span class="project-badge">Client Project</span>
+                    <button type="button" class="showcase-main" onclick="openModal('ams')" aria-label="Open AMS project details">
+                        <img src="ams/ams-login.jpg" alt="AMS sign-in screen (Arabic, RTL)" id="amsMainShot" loading="lazy">
+                    </button>
+                    <div class="showcase-thumbs" role="group" aria-label="AMS screenshots">
+                        <button type="button" class="showcase-thumb active" data-shot="ams/ams-login.jpg" data-alt="AMS sign-in screen (Arabic, RTL)" aria-label="Sign-in screen">
+                            <img src="ams/ams-login.jpg" alt="" loading="lazy">
+                        </button>
+                        <button type="button" class="showcase-thumb" data-shot="ams/ams-new-request.jpg" data-alt="New custody request form" aria-label="New custody request form">
+                            <img src="ams/ams-new-request.jpg" alt="" loading="lazy">
+                        </button>
+                        <button type="button" class="showcase-thumb" data-shot="ams/ams-qr-label.jpg" data-alt="Asset QR code and thermal label" aria-label="Asset QR label">
+                            <img src="ams/ams-qr-label.jpg" alt="" loading="lazy">
+                        </button>
+                    </div>
+                </div>
+                <div class="project-content showcase-content">
+                    <div class="showcase-meta">
+                        <span><i class="fas fa-building"></i> dot Jordan</span>
+                        <span><i class="fas fa-circle-check"></i> Delivered Dec 2025</span>
+                        <span><i class="fas fa-signal"></i> Live in production</span>
+                    </div>
+                    <h3 class="project-title" id="amsTitle">AMS — Asset &amp; Resource Management System</h3>
+                    <p class="project-description">
+                        A production web platform built for <strong>dot Jordan (Digital Opportunity Trust)</strong>, a non-profit
+                        that runs digital training programs across several sites. It replaced a paper and Excel process
+                        with a fully digital asset lifecycle: devices are requested, approved, signed for, handed over,
+                        transferred and cleared, with every step tracked.
+                    </p>
+                    <ul class="showcase-points">
+                        <li><i class="fas fa-route"></i> Multi-step approval workflow across 5 user roles</li>
+                        <li><i class="fas fa-signature"></i> Digital signatures on legally binding custody PDFs</li>
+                        <li><i class="fas fa-qrcode"></i> QR asset tags, thermal label printing and a scanner</li>
+                        <li><i class="fas fa-language"></i> Arabic-first RTL interface with English support</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="tag">Laravel 12</span>
+                        <span class="tag">PHP 8.2</span>
+                        <span class="tag">MySQL 8</span>
+                        <span class="tag">Livewire 3</span>
+                        <span class="tag">Alpine.js</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">Spatie RBAC</span>
+                        <span class="tag">mPDF</span>
+                        <span class="tag">Pest</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://dot-jordan.com" target="_blank" rel="noopener" class="project-link"><i class="fas fa-external-link-alt"></i> Live Site</a>
+                        <a href="#" class="project-link" onclick="event.preventDefault(); openModal('ams')"><i class="fas fa-circle-info"></i> Full Breakdown</a>
+                    </div>
+                </div>
+            </article>
+
             <div class="project-card featured reveal" onclick="openModal('drone')" tabindex="0" role="button">
                 <span class="project-badge">Featured</span>
                 <img src="Screenshot 2025-12-14 110349.png" alt="Drone Detection System" class="project-image">

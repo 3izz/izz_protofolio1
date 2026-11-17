@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // (e.g. "tell me about the pos system"), so narrow topics are checked
         // first and only fall through to broad ones like About/Projects last.
         const knowledge = [
+            { keys: ['ams', 'asset', 'dot', 'custody', 'inventory'],
+              reply: "AMS is an Asset & Resource Management System Izz built for dot Jordan (Digital Opportunity Trust) and delivered in December 2025. It runs the full device lifecycle (request, approval, digital signature, handover, transfer and clearance) across 5 user roles, with QR asset tags and Arabic custody PDFs. Built with Laravel 12, MySQL 8, Livewire 3, Alpine.js and Tailwind. It's live at dot-jordan.com, and you'll find it as the first card in the Projects section." },
             { keys: ['drone'],
               reply: "The Drone Detection System uses Python, TensorFlow and computer vision to detect and track drones in real time from live video — it's the featured project card in the Projects section." },
             { keys: ['pos', 'yazori', 'supermarket'],
@@ -84,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { keys: ['skill', 'stack', 'technolog', 'language', 'programming'],
               reply: "Core skills: Programming, Frontend & Backend Development, Machine Learning and Data Analysis (all Advanced), plus Deep Learning, Big Data and Visualization. Full breakdown is in the Skills section above." },
             { keys: ['project', 'portfolio', 'built', 'build'],
-              reply: "Highlights: the Drone Detection System (real-time YOLO-based detection — his featured project), an offline Laravel/SQLite POS system built for a real supermarket, an AI Log Detector, Jmooh AI, and several full-stack sites like agroberry.online, an e-commerce store, a quiz game, and MedFungi Insecta. See the Projects section for live/GitHub links." },
+              reply: "Highlights: AMS, a production asset management system for dot Jordan (Laravel 12 + MySQL, live at dot-jordan.com), the Drone Detection System (real-time YOLO-based detection — his featured project), an offline Laravel/SQLite POS system built for a real supermarket, an AI Log Detector, Jmooh AI, and several full-stack sites like agroberry.online, an e-commerce store, a quiz game, and MedFungi Insecta. See the Projects section for live/GitHub links." },
             { keys: ['about', 'background', 'bio'],
               reply: "Izz is an AI Engineer & Full-Stack Web Developer focused on AI, LLMs and Data Science — working with Hugging Face, model fine-tuning, and local inference with LM Studio. He also builds full-stack apps with PHP (Laravel), JavaScript and MySQL, and holds a Bachelor's in AI & Data Science from Tafila Technical University." },
             { keys: ['thank', 'shukran'],
@@ -503,6 +505,55 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Project data
     const projectData = {
+        ams: {
+            title: 'AMS — Asset & Resource Management System',
+            description: 'A production asset and custody management platform built for dot Jordan (Digital Opportunity Trust). Delivered in December 2025 and live at dot-jordan.com.',
+            link: 'https://dot-jordan.com',
+            linkLabel: 'Visit Live Site',
+            linkIcon: 'fas fa-external-link-alt',
+            gallery: [
+                { src: 'ams/ams-login.jpg', caption: 'Sign-in: an Arabic-first, RTL interface in the dot Jordan brand.' },
+                { src: 'ams/ams-new-request.jpg', caption: 'New custody request: personal or training custody, location, purpose and the device categories needed.' },
+                { src: 'ams/ams-qr-label.jpg', caption: 'Every asset gets a QR code that can be printed as a thermal label or a multi-size PDF.' }
+            ],
+            details: `
+                <h3>The Problem</h3>
+                <p>dot Jordan is a non-profit that runs digital training programs for young people across several sites. Its warehouse holds laptops, tablets, phones, routers, SIM cards, printers and projectors. Some are owned by the organization and some are donated by partners. Tracking used to rely on an Excel sheet and paper custody forms, so it was hard to know who held which device, where it was, or whether it came back.</p>
+
+                <h3>The Solution</h3>
+                <p>AMS digitizes the whole asset lifecycle: <strong>request → approval → digital signature → handover → transfer → clearance</strong>. Every action is permission-checked and logged.</p>
+                <ul>
+                    <li><strong>Role-based workflow</strong>: employees, direct managers, HR, the logistics/warehouse manager and data-entry staff each see only what their role allows.</li>
+                    <li><strong>Custody requests</strong>: personal custody (held until clearance) or training custody (returned after a course or project).</li>
+                    <li><strong>Digital signatures</strong>: users sign on screen, and the system generates a binding Arabic custody PDF with every party's signature.</li>
+                    <li><strong>Transfers &amp; clearance</strong>: custody moves between colleagues, and devices are cleared item by item (received / damaged).</li>
+                    <li><strong>Asset registry</strong>: categories, warehouses, ownership vs. donation source, warranty dates and hidden/restricted assets.</li>
+                    <li><strong>QR codes</strong>: each device gets a QR tag for thermal label printing, plus an in-app scanner for fast lookup.</li>
+                    <li><strong>Operations</strong>: hospitality requests, an internal mailbox, document templates, reports, Excel import/export, daily backups and a full audit log.</li>
+                    <li><strong>Notifications</strong>: an in-app notification center and transactional email for every workflow step.</li>
+                </ul>
+
+                <h3>Screenshots</h3>
+                <div class="modal-gallery">{{gallery}}</div>
+
+                <h3>Tech Stack</h3>
+                <table class="tech-table">
+                    <tr><th>Framework</th><td>Laravel 12 on PHP 8.2, with a clean architecture of service classes, Form Requests and Policies</td></tr>
+                    <tr><th>Database</th><td>MySQL 8 (InnoDB, utf8mb4) with 50+ versioned migrations</td></tr>
+                    <tr><th>Frontend</th><td>Blade + Livewire 3, Alpine.js and Tailwind CSS, built with Vite; fully RTL</td></tr>
+                    <tr><th>Auth &amp; RBAC</th><td>Laravel Breeze plus spatie/laravel-permission for roles and permissions</td></tr>
+                    <tr><th>Documents</th><td>mPDF + ar-php for correctly shaped Arabic PDFs; signature_pad canvas signatures</td></tr>
+                    <tr><th>Assets &amp; Data</th><td>simple-qrcode for QR tags, maatwebsite/excel for import/export</td></tr>
+                    <tr><th>Reliability</th><td>spatie/laravel-activitylog (audit trail), spatie/laravel-backup, queued jobs on Supervisor workers</td></tr>
+                    <tr><th>Email</th><td>Resend for transactional notifications</td></tr>
+                    <tr><th>Testing</th><td>Pest / PHPUnit feature tests, Laravel Pint for code style</td></tr>
+                    <tr><th>Deployment</th><td>Linux VPS: Ubuntu, Nginx, PHP-FPM, MySQL and Let's Encrypt SSL</td></tr>
+                </table>
+
+                <h3>Outcome</h3>
+                <p>Delivered in <strong>December 2025</strong> and running in production at dot-jordan.com. I also produced a set of narrated, role-by-role video tutorials so every user group can use the system without help.</p>
+            `
+        },
         drone: {
             title: 'Drone Detection System',
             image: 'Drone Detection Syst.png',
@@ -627,16 +678,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const project = projectData[projectId];
         if (!project) return;
         
+        const galleryHtml = (project.gallery || []).map(function(shot) {
+            return `<figure><img src="${shot.src}" alt="${shot.caption}" loading="lazy"><figcaption>${shot.caption}</figcaption></figure>`;
+        }).join('');
+        const heroImage = project.image;
+
         const modalContent = `
-            <img src="${project.image}" alt="${project.title}" class="modal-image">
+            ${heroImage ? `<img src="${heroImage}" alt="${project.title}" class="modal-image">` : ''}
             <h2>${project.title}</h2>
             <p>${project.description}</p>
             <div class="project-details">
-                ${project.details}
+                ${project.details.replace('{{gallery}}', galleryHtml)}
             </div>
             <div class="modal-actions">
                 <a href="${project.link || '#'}" target="_blank" rel="noopener" class="btn btn-primary">
-                    <i class="fab fa-github"></i> View Code
+                    <i class="${project.linkIcon || 'fab fa-github'}"></i> ${project.linkLabel || 'View Code'}
                 </a>
             </div>
         `;
@@ -645,6 +701,22 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     };
+
+    // AMS showcase card: swap the main screenshot when a thumbnail is clicked
+    const amsMainShot = document.getElementById('amsMainShot');
+    document.querySelectorAll('.showcase-thumb').forEach(function(thumb) {
+        thumb.addEventListener('click', function() {
+            if (!amsMainShot || thumb.classList.contains('active')) return;
+            document.querySelectorAll('.showcase-thumb').forEach(function(t) { t.classList.remove('active'); });
+            thumb.classList.add('active');
+            amsMainShot.classList.add('swapping');
+            setTimeout(function() {
+                amsMainShot.src = thumb.dataset.shot;
+                amsMainShot.alt = thumb.dataset.alt;
+                amsMainShot.classList.remove('swapping');
+            }, 200);
+        });
+    });
 
     // Close modal function
     window.closeModal = function() {
