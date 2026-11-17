@@ -2190,3 +2190,11 @@ textarea:focus-visible {
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+.cert-verify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+}

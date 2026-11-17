@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { keys: ['pos', 'yazori', 'supermarket'],
               reply: "The Al-Yazori Market project is a fully offline point-of-sale system for a real neighborhood supermarket — built with Laravel, PHP and SQLite, running entirely on a local Windows machine with no internet dependency." },
             { keys: ['certificate', 'certification', 'course'],
-              reply: "Izz holds certificates from Google (Data Analysis), Udemy (Generative AI), Udacity (AI & Data Analysis), HP (Agile Project Management, Data Science & Analytics) and Meta (Databases) — see the Certificates section." },
+              reply: "Izz holds certificates from Anthropic (AI Fluency: Framework & Foundations), Google (Data Analysis), Udemy (Generative AI), Udacity (AI & Data Analysis), HP (Agile Project Management, Data Science & Analytics) and Meta (Databases) — see the Certificates section." },
             { keys: ['cv', 'resume'],
               reply: "You can grab the CV from the About section above — there's a Download CV button right under the bio." },
             { keys: ['contact', 'email', 'phone', 'hire', 'reach', 'linkedin'],
@@ -462,6 +462,10 @@ document.addEventListener('DOMContentLoaded', function() {
             .map(tag => `<span class="tag">${tag.textContent.trim()}</span>`)
             .join('');
         const imageSrc = img ? img.src : '';
+        const verifyLink = cardEl.querySelector('.cert-verify-link');
+        const verifyButton = verifyLink
+            ? `<a href="${verifyLink.href}" target="_blank" rel="noopener" class="btn btn-secondary"><i class="fas fa-circle-check"></i> Verify Online</a>`
+            : '';
 
         const modalContent = `
             <img src="${imageSrc}" alt="${title}" class="certificate-modal-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YxZjNlMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM3Nzg4NzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNlcnRpZmljYXRlIEltYWdlPC90ZXh0Pjwvc3ZnPg==';">
@@ -473,6 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <a href="${imageSrc}" download="${title.replace(/\s+/g, '_')}.png" class="btn btn-primary">
                     <i class="fas fa-download"></i> Download Certificate
                 </a>
+                ${verifyButton}
             </div>
         `;
 
